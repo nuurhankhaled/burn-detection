@@ -9,10 +9,10 @@ def predict():
     project = rf.workspace().project("skin-burn-detiction")
     model_version = 3
     model = project.version(model_version).model
-    # Get the image_path parameter from the request header
-    image_path = request.args.get('image_path')
-    print(image_path)
-    return model.predict(image_path, confidence=40, overlap=30).json()
+    # Get the image URL from the query parameter
+    image_url = request.args.get('image_url')
+    print(image_url)
+    return model.predict_from_url(image_url, confidence=40, overlap=30).json()
 
 
 if __name__ == '__main__':
