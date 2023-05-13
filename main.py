@@ -1,12 +1,8 @@
 from flask import Flask, jsonify, request, session
 from roboflow import Roboflow
 import os
-
 app = Flask(__name__)
 # Initialize the Roboflow instance and set the API key
-
-
-
 @app.route("/predict", methods=['POST'])
 def predict():
     rf = Roboflow(api_key="T3mYNN9ubGhQnuAOzDfR")
