@@ -4,14 +4,15 @@ import os
 
 app = Flask(__name__)
 # Initialize the Roboflow instance and set the API key
-rf = Roboflow(api_key="T3mYNN9ubGhQnuAOzDfR")
-project = rf.workspace().project("skin-burn-detiction")
-model_version = 3
-model = project.version(model_version).model
+
 
 
 @app.route("/predict", methods=['POST'])
 def predict():
+    rf = Roboflow(api_key="T3mYNN9ubGhQnuAOzDfR")
+    project = rf.workspace().project("skin-burn-detiction")
+    model_version = 3
+    model = project.version(model_version).model
     # Get the image_path parameter from the request header
     image_path = request.args.get('image_path')
     print(image_path)
